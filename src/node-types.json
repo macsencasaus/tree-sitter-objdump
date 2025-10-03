@@ -19,33 +19,6 @@
     }
   },
   {
-    "type": "comment",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "address",
-          "named": true
-        },
-        {
-          "type": "code_location",
-          "named": true
-        },
-        {
-          "type": "file_offset",
-          "named": true
-        },
-        {
-          "type": "hexadecimal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "disassembly_section",
     "named": true,
     "fields": {},
@@ -216,11 +189,16 @@
   {
     "type": "source",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "comment",
+          "named": true
+        },
         {
           "type": "disassembly_section",
           "named": true
@@ -276,10 +254,6 @@
     "named": false
   },
   {
-    "type": "#",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -325,6 +299,10 @@
   },
   {
     "type": "byte",
+    "named": true
+  },
+  {
+    "type": "comment",
     "named": true
   },
   {

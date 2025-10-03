@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "objdump",
   "rules": {
     "source": {
@@ -34,6 +35,10 @@
         {
           "type": "SYMBOL",
           "name": "source_location"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "comment"
         }
       ]
     },
@@ -282,26 +287,8 @@
       "value": "(bad)"
     },
     "comment": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "#"
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_comment_with_address"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_comment_with_label"
-            }
-          ]
-        }
-      ]
+      "type": "PATTERN",
+      "value": "#.*"
     },
     "_comment_with_label": {
       "type": "SEQ",
@@ -525,6 +512,6 @@
     }
   ],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
-

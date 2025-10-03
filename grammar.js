@@ -44,6 +44,7 @@ module.exports = grammar(
                 $.label_line,
                 $.memory_offset,
                 $.source_location,
+                $.comment,
             ),
 
             header: $ => seq($.file_path, ":", "file", "format", $.identifier),
@@ -97,13 +98,16 @@ module.exports = grammar(
             instruction: $ => /[^\n#<]+/,
             bad_instruction: $ => "(bad)",
 
-            comment: $ => seq(
-                "#",
-                choice(
-                    $._comment_with_address,
-                    $._comment_with_label,
-                ),
-            ),
+            // comment: $ => seq(
+            //     "#",
+            //     choice(
+            //         $._comment_with_address,
+            //         $._comment_with_label,
+            //         $._arbitrary_comment,
+            //     ),
+            // ),
+
+            comment : $ => /#.*/,
 
             _comment_with_label: $ => seq($.address, $.code_location, optional($.file_offset)),
             _comment_with_address: $ => $.hexadecimal,
